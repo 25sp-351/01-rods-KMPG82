@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 /* recursive function that explores all possible options of cutting a rod of a
 given length and returns the maximum value that can be obtained with a given set
 of length options and their values */
@@ -21,11 +22,11 @@ int rod_cutting(const int rod_length, const int length_options[],
         if (length_options[ix] <= rod_length) {
             current_cuts[ix]++;
 
-            int current_remainder = rod_length - length_options[ix];
-            int current_value     = length_values[ix] +
+            int current_remainder = (rod_length - length_options[ix]);
+            int current_value     = (length_values[ix] +
                                 rod_cutting(current_remainder, length_options,
                                             length_values, length_options_size,
-                                            current_cuts, &current_remainder);
+                                            current_cuts, &current_remainder));
 
             if (current_value > best_value) {
                 best_value = current_value;
