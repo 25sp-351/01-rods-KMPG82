@@ -5,11 +5,14 @@
 int rod_cutting(const int size, const int length_options[], const int values[],
                 const int length_options_size, int cuts[], int *remainder);
 
-void print_cutting_list(const int length_options[], const int cuts[],
-                        const int values[], const int length_options_size);
+void print_cut_distribution(const int length_options[], const int cuts[],
+                            const int values[], const int length_options_size);
 
-/* main function that takes in the rod length as an argument and prompts the
-user to enter the list of piece options and their values */
+void input_cut_options(int length_options[], int values[], int cuts[],
+                       const int length_options_size);
+
+/* main function that takes in the rod length as an argument from the command
+line */
 int main(int argc, char *argv[]) {
     int rod_length          = atoi(argv[1]);
     int remainder           = 0;
@@ -22,25 +25,19 @@ int main(int argc, char *argv[]) {
     int values[length_options_size];
     int cuts[length_options_size];
 
-    for (int ix = 0; ix < length_options_size; ix++) {
-        printf(
-            "Enter the list of piece prices one at a time as shown "
-            "(<length> <value>): ");
-        scanf("%d %d", &length_options[ix], &values[ix]);
-        cuts[ix] = 0;
-    }
+    input_cut_options(length_options, values, cuts, length_options_size);
 
     int best_value = rod_cutting(rod_length, length_options, values,
                                  length_options_size, cuts, &remainder);
 
-    print_cutting_list(length_options, cuts, values, length_options_size);
+    print_cut_distribution(length_options, cuts, values, length_options_size);
     printf("Remainder: %d\n", remainder);
     printf("Value: %d\n", best_value);
 }
 
 /* recursive function that explores all possible options of cutting a rod of a
-given length to find the maximum value that can be obtained with a given set of
-length options and their values */
+given length and returns the maximum value that can be obtained with a given set
+of length options and their values */
 int rod_cutting(const int rod_length, const int length_options[],
                 const int length_values[], const int length_options_size,
                 int cuts[], int *remainder) {
@@ -60,7 +57,6 @@ int rod_cutting(const int rod_length, const int length_options[],
             current_cuts[ix]++;
 
             int current_remainder = rod_length - length_options[ix];
-
             int current_value     = length_values[ix] +
                                 rod_cutting(current_remainder, length_options,
                                             length_values, length_options_size,
@@ -80,11 +76,25 @@ int rod_cutting(const int rod_length, const int length_options[],
     return best_value;
 }
 
-void print_cutting_list(const int length_options[], const int cuts[],
-                        const int values[], const int length_options_size) {
+/* prints the distribution of cuts along with how much value they contributed to
+the total */
+void print_cut_distribution(const int length_options[], const int cuts[],
+                            const int values[], const int length_options_size) {
     printf("\nCutting list: \n");
     for (int ix = 0; ix < length_options_size; ix++) {
         int value_of_cuts = cuts[ix] * values[ix];
         printf("%d @ %d = %d \n", length_options[ix], cuts[ix], value_of_cuts);
+    }
+}
+
+/* prompts the user to input cut options along with their respective values */
+void input_cut_options(int length_options[], int values[], int cuts[],
+                       const int length_options_size) {
+    for (int ix = 0; ix < length_options_size; ix++) {
+        printf(
+            "Enter the list of piece prices one at a time as shown "
+            "(<length> <value>): ");
+        scanf("%d %d", &length_options[ix], &values[ix]);
+        cuts[ix] = 0;
     }
 }
