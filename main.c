@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     int *length_options   = NULL;
     int *values           = NULL;
     int number_of_options = 0;
- 
+
     input_cut_options(&length_options, &values, &number_of_options);
 
     int cuts[number_of_options];
