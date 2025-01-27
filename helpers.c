@@ -3,17 +3,17 @@
 
 /* prints the distribution of cuts along with how much value they contributed to
 the total, the remainder, and the most value that can be obtained */
-void print_results(const int LENGTH_OPTIONS[], const int CUTS[],
-                   const int VALUES[], const int NUMBER_OF_OPTIONS,
-                   const int REMAINDER, const int BEST_VALUE) {
+void print_results(const int length_options[], const int cuts[],
+                   const int values[], const int number_of_options,
+                   const int remainder, const int best_value) {
     printf("\nCutting list (<n> @ <size> = <total value>): \n");
-    for (int ix = 0; ix < NUMBER_OF_OPTIONS; ix++) {
-        const int TOTAL_VALUE = (CUTS[ix] * VALUES[ix]);
-        printf("%d @ %d = %d \n", CUTS[ix], LENGTH_OPTIONS[ix], TOTAL_VALUE);
+    for (int ix = 0; ix < number_of_options; ix++) {
+        const int TOTAL_VALUE = (cuts[ix] * values[ix]);
+        printf("%d @ %d = %d \n", cuts[ix], length_options[ix], TOTAL_VALUE);
     }
 
-    printf("Remainder: %d\n", REMAINDER);
-    printf("Value: %d\n", BEST_VALUE);
+    printf("remainder: %d\n", remainder);
+    printf("Value: %d\n", best_value);
 }
 
 /* prompts the user to input cut options along with their respective values */

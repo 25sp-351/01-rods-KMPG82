@@ -116,3 +116,24 @@ Remainder: 0
 Value: 262
 
 STATUS: PASSED
+----------------------
+TEST CASE 7
+Input:
+./main 45
+
+Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
+32, 13
+23, 12
+40, 15
+21, 10
+
+Expected Output:
+Cutting list (<n> @ <size> = <total value>): 
+0 @ 32 = 0 
+1 @ 23 = 12 
+0 @ 40 = 0 
+1 @ 21 = 10 
+remainder: 1
+Value: 22
+
+STATUS: PASSED

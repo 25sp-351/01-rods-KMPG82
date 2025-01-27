@@ -7,7 +7,7 @@
 /* main function that takes in the rod length as an argument from the command
 line */
 int main(int argc, char *argv[]) {
-    const int ROD_LENGTH  = atoi(argv[1]);
+    const int rod_length  = atoi(argv[1]);
     int remainder         = 0;
     int *length_options   = NULL;
     int *values           = NULL;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     int cuts[number_of_options];
     memset(cuts, 0, sizeof(cuts));
 
-    int best_value = rod_cutting(ROD_LENGTH, length_options, values,
+    int best_value = rod_cutting(rod_length, length_options, values,
                                  number_of_options, cuts, &remainder);
 
     print_results(length_options, cuts, values, number_of_options, remainder,

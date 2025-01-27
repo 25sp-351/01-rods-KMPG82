@@ -4,28 +4,28 @@
 /* recursive function that explores all possible options of cutting a rod of a
 given length and returns the maximum value that can be obtained with a given set
 of length options and their values */
-int rod_cutting(const int ROD_LENGTH, const int LENGTH_OPTIONS[],
-                const int LENGTH_VALUES[], const int NUMBER_OF_OPTIONS,
+int rod_cutting(const int rod_length, const int length_options[],
+                const int length_values[], const int number_of_options,
                 int cuts[], int *remainder) {
-    if (ROD_LENGTH == 0)
+    if (rod_length == 0)
         return 0;
 
     int best_value     = 0;
-    int best_remainder = ROD_LENGTH;
-    int best_cuts[NUMBER_OF_OPTIONS];
+    int best_remainder = rod_length;
+    int best_cuts[number_of_options];
     memcpy(best_cuts, cuts, sizeof(best_cuts));
 
-    for (int ix = 0; ix < NUMBER_OF_OPTIONS; ix++) {
-        int current_cuts[NUMBER_OF_OPTIONS];
+    for (int ix = 0; ix < number_of_options; ix++) {
+        int current_cuts[number_of_options];
         memcpy(current_cuts, cuts, sizeof(current_cuts));
 
-        if (LENGTH_OPTIONS[ix] <= ROD_LENGTH) {
+        if (length_options[ix] <= rod_length) {
             current_cuts[ix]++;
 
-            int current_remainder = (ROD_LENGTH - LENGTH_OPTIONS[ix]);
-            int current_value     = (LENGTH_VALUES[ix] +
-                                 rod_cutting(current_remainder, LENGTH_OPTIONS,
-                                                 LENGTH_VALUES, NUMBER_OF_OPTIONS,
+            int current_remainder = (rod_length - length_options[ix]);
+            int current_value     = (length_values[ix] +
+                                 rod_cutting(current_remainder, length_options,
+                                                 length_values, number_of_options,
                                                  current_cuts, &current_remainder));
 
             if (current_value > best_value) {
