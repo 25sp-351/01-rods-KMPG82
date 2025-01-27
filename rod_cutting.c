@@ -10,11 +10,6 @@ int rod_cutting(const int ROD_LENGTH, const int LENGTH_OPTIONS[],
     if (ROD_LENGTH == 0)
         return 0;
 
-    // for (int i = 0; i < NUMBER_OF_OPTIONS; i++)
-    // {
-    //     printf("LENGTH_OPTIONS[%d]: %d\n", i, LENGTH_OPTIONS[i]);
-    // }
-
     int best_value     = 0;
     int best_remainder = ROD_LENGTH;
     int best_cuts[NUMBER_OF_OPTIONS];
@@ -27,8 +22,6 @@ int rod_cutting(const int ROD_LENGTH, const int LENGTH_OPTIONS[],
         if (LENGTH_OPTIONS[ix] <= ROD_LENGTH) {
             current_cuts[ix]++;
 
-            // printf("ROD_LENGTH: %d, LENGTH_OPTIONS[%d]: %d\n", ROD_LENGTH,
-            // ix, LENGTH_OPTIONS[ix]);
             int current_remainder = (ROD_LENGTH - LENGTH_OPTIONS[ix]);
             int current_value     = (LENGTH_VALUES[ix] +
                                  rod_cutting(current_remainder, LENGTH_OPTIONS,
