@@ -1,4 +1,5 @@
 #pragma once
 
-int rod_cutting(const int size, const int length_options[], const int values[],
-                const int length_options_size, int cuts[], int *remainder);
+int rod_cutting(const int ROD_LENGTH, const int LENGTH_OPTIONS[],
+                const int LENGTH_VALUES[], const int LENGTH_OPTIONS_SIZE,
+                int cuts[], int *remainder);

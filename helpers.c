@@ -2,19 +2,19 @@
 
 /* prints the distribution of cuts along with how much value they contributed to
 the total */
-void print_cut_distribution(const int length_options[], const int cuts[],
-                            const int values[], const int length_options_size) {
+void print_cut_distribution(const int LENGTH_OPTIONS[], const int CUTS[],
+                            const int VALUES[], const int LENGTH_OPTIONS_SIZE) {
     printf("\nCutting list (<n> @ <size> = <total value>): \n");
-    for (int ix = 0; ix < length_options_size; ix++) {
-        int value_of_cuts = (cuts[ix] * values[ix]);
-        printf("%d @ %d = %d \n", cuts[ix], length_options[ix], value_of_cuts);
+    for (int ix = 0; ix < LENGTH_OPTIONS_SIZE; ix++) {
+        const int TOTAL_VALUE = (CUTS[ix] * VALUES[ix]);
+        printf("%d @ %d = %d \n", CUTS[ix], LENGTH_OPTIONS[ix], TOTAL_VALUE);
     }
 }
 
 /* prompts the user to input cut options along with their respective values */
-void input_cut_options(int length_options[], int values[], int cuts[],
-                       const int length_options_size) {
-    for (int ix = 0; ix < length_options_size; ix++) {
+void input_cut_options(const int LENGTH_OPTIONS_SIZE, int length_options[],
+                       int values[], int cuts[]) {
+    for (int ix = 0; ix < LENGTH_OPTIONS_SIZE; ix++) {
         printf(
             "Enter the list of piece prices one at a time as shown (<length> "
             "<value>): ");
