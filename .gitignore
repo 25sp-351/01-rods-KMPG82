@@ -5,3 +5,4 @@
 .exe
 .ob
 node_modules/
+.github

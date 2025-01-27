@@ -23,7 +23,6 @@ int main(int argc, char *argv[]) {
     int best_value = rod_cutting(ROD_LENGTH, length_options, values,
                                  length_options_size, cuts, &remainder);
 
-    print_cut_distribution(length_options, cuts, values, length_options_size);
-    printf("Remainder: %d\n", remainder);
-    printf("Value: %d\n", best_value);
+    print_results(length_options, cuts, values, length_options_size, remainder, best_value);
+
 }
