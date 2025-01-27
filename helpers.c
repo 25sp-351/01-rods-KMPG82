@@ -30,6 +30,7 @@ void input_cut_options(int **length_options, int **values,
     while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         if (sscanf(buffer, "%d, %d", &length, &value) != 2)
             break;
+
         *length_options =
             realloc(*length_options, (*number_of_options + 1) * sizeof(int));
         *values = realloc(*values, (*number_of_options + 1) * sizeof(int));
