@@ -4,23 +4,33 @@
 #include "helpers.h"
 #include "rod_cutting.h"
 
+#define INITIAL_SIZE 5
+
 /* main function that takes in the rod length as an argument from the command
 line */
 int main(int argc, char *argv[]) {
-    const int rod_length  = atoi(argv[1]);
-    int remainder         = 0;
-    int *length_options   = NULL;
-    int *values           = NULL;
-    int number_of_options = 0;
+    if (!sscanf(argv[1], "%d", &argc)) {
+        printf(
+            "Invalid input. Follow this format \"./main <integer>\". For "
+            "example, \"./main 45\".\n");
+        return 0;
+    }
+    const int rod_length         = argc;
+    int remainder                = 0;
+    int *length_options          = calloc(INITIAL_SIZE, sizeof(int));
+    int *values                  = calloc(INITIAL_SIZE, sizeof(int));
+    int number_of_length_options = 0;
+    int array_size               = INITIAL_SIZE;
 
-    input_cut_options(&length_options, &values, &number_of_options);
+    input_cut_options(&length_options, &values, &number_of_length_options,
+                      &array_size);
 
-    int cuts[number_of_options];
+    int cuts[number_of_length_options];
     memset(cuts, 0, sizeof(cuts));
 
     int best_value = rod_cutting(rod_length, length_options, values,
-                                 number_of_options, cuts, &remainder);
+                                 number_of_length_options, cuts, &remainder);
 
-    print_results(length_options, cuts, values, number_of_options, remainder,
-                  best_value);
+    print_results(length_options, cuts, values, number_of_length_options,
+                  remainder, best_value);
 }
