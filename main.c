@@ -9,8 +9,8 @@
 /* main function that takes in the rod length as an argument from the command
 line */
 int main(int argc, char *argv[]) {
-    if (!sscanf(argv[1], "%d", &argc) ||
-        input_rod_length_error_check(argv[1]) || argc != 2) {
+    if (argc != 2 || !sscanf(argv[1], "%d", &argc) ||
+        input_rod_length_error_check(argv[1])) {
         printf(
             "Invalid input. Input one integer in this format \"./main "
             "<integer>\". For "
