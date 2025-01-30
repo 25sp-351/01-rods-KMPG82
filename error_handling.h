@@ -1,5 +1,9 @@
 #pragma once
 
-int check_for_additional_characters(const char *buffer);
+int length_value_additional_characters(const char *buffer);
 
-int validate_length_value_input(const int *length, const int *value);
+int negative_length_value(const int *length, const int *value);
+
+int rod_length_additional_characters(const char *argv);
+
+int negative_rod_length(const int *rod_length);

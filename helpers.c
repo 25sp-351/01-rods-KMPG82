@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "error_handling.h"
 
+#include "error_handling.h"
 #define BUFFER_SIZE 100
 
 /* prints the distribution of cuts along with how much value they contributed to
@@ -19,7 +19,6 @@ void print_results(const int length_options[], const int cuts[],
     printf("Value: %d\n", best_value);
 }
 
-
 /* prompts the user to input cut options along with their respective values */
 void input_cut_options(int *length_options[], int *values[],
                        int *number_of_length_options, int *array_size) {
@@ -33,10 +32,11 @@ void input_cut_options(int *length_options[], int *values[],
 
     while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         if (sscanf(buffer, "%d, %d", &length, &value) != 2 ||
-            check_for_additional_characters(buffer) ||
-            validate_length_value_input(&length, &value) == 0) {
+            length_value_additional_characters(buffer) ||
+            negative_length_value(&length, &value) == 0) {
             printf(
-                "Invalid input. Only enter integers in the specified format. "
+                "Invalid input. Only enter positive integers in the specified "
+                "format. "
                 "For example, \"24, 5\".\n");
             continue;
         }
@@ -53,11 +53,4 @@ void input_cut_options(int *length_options[], int *values[],
         (*values)[*number_of_length_options]         = value;
         (*number_of_length_options)++;
     }
-}
-
-/* checks for additional characters after inputting an integer that represents
-the rod length */
-int input_rod_length_error_check(const char *argv) {
-    char extra_character;
-    return (sscanf(argv, "%*d %c", &extra_character) == 1);
 }

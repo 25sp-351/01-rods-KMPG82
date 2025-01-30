@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "error_handling.h"
 #include "helpers.h"
 #include "rod_cutting.h"
 
@@ -11,9 +12,10 @@
 line */
 int main(int argc, char *argv[]) {
     if (argc != 2 || !sscanf(argv[1], "%d", &argc) ||
-        input_rod_length_error_check(argv[1])) {
+        rod_length_additional_characters(argv[1]) ||
+        negative_rod_length(&argc)) {
         printf(
-            "Invalid input. Input one integer in this format \"./main "
+            "Invalid input. Input one positive integer in this format \"./main "
             "<integer>\". For "
             "example, \"./main 45\".\n");
         return 0;
