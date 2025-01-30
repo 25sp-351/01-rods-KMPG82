@@ -31,15 +31,19 @@ int main(int argc, char *argv[]) {
     input_cut_options(&length_options, &values, &number_of_length_options,
                       &array_size);
 
-    if (number_of_length_options != 0) {
-        int cuts[number_of_length_options];
-        memset(cuts, 0, sizeof(cuts));
-
-        int best_value =
-            rod_cutting(rod_length, length_options, values,
-                        number_of_length_options, cuts, &remainder);
-
-        print_results(length_options, cuts, values, number_of_length_options,
-                      remainder, best_value);
+    if (number_of_length_options == 0) {
+        printf("Enter at least one length and value pair.\n");
+        return 0;
     }
+
+    int cuts[number_of_length_options];
+    memset(cuts, 0, sizeof(cuts));
+
+    int best_value =
+        rod_cutting(rod_length, length_options, values,
+                    number_of_length_options, cuts, &remainder);
+
+    print_results(length_options, cuts, values, number_of_length_options,
+                    remainder, best_value);
+    
 }
