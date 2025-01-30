@@ -9,12 +9,15 @@
 /* main function that takes in the rod length as an argument from the command
 line */
 int main(int argc, char *argv[]) {
-    if (!sscanf(argv[1], "%d", &argc)) {
+    if (!sscanf(argv[1], "%d", &argc) ||
+        input_rod_length_error_check(argv[1]) || argc != 2) {
         printf(
-            "Invalid input. Follow this format \"./main <integer>\". For "
+            "Invalid input. Input one integer in this format \"./main "
+            "<integer>\". For "
             "example, \"./main 45\".\n");
         return 0;
     }
+
     const int rod_length         = argc;
     int remainder                = 0;
     int *length_options          = calloc(INITIAL_SIZE, sizeof(int));

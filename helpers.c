@@ -16,6 +16,13 @@ void print_results(const int length_options[], const int cuts[],
     printf("Value: %d\n", best_value);
 }
 
+/* checks for additional characters after inputting two integers representing
+the length and value */
+int input_cut_options_error_check(const char *buffer) {
+    char extra_character;
+    return (sscanf(buffer, "%*d, %*d %c", &extra_character) == 1);
+}
+
 /* prompts the user to input cut options along with their respective values */
 void input_cut_options(int **length_options, int **values,
                        int *number_of_length_options, int *array_size) {
@@ -28,7 +35,8 @@ void input_cut_options(int **length_options, int **values,
         "<value>\" (Ctrl+Z for Windows / Ctrl+D for Linux to end):\n");
 
     while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-        if (sscanf(buffer, "%d, %d", &length, &value) != 2) {
+        if (sscanf(buffer, "%d, %d", &length, &value) != 2 ||
+            input_cut_options_error_check(buffer)) {
             printf(
                 "Invalid input. Only enter integers in the specified format. "
                 "For example, \"24, 5\".\n");
@@ -47,4 +55,11 @@ void input_cut_options(int **length_options, int **values,
         (*values)[*number_of_length_options]         = value;
         (*number_of_length_options)++;
     }
+}
+
+/* checks for additional characters after inputting an integer that represents
+the rod length */
+int input_rod_length_error_check(const char *argv) {
+    char extra_character;
+    return (sscanf(argv, "%*d %c", &extra_character) == 1);
 }
