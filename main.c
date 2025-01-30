@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "helpers.h"
 #include "rod_cutting.h"
 
@@ -28,9 +29,15 @@ int main(int argc, char *argv[]) {
     input_cut_options(&length_options, &values, &number_of_length_options,
                       &array_size);
 
+    if (number_of_length_options == 0) {
+        printf("No length options were entered.\n");
+        return 0;
+    }
+
     int cuts[number_of_length_options];
     memset(cuts, 0, sizeof(cuts));
 
+    printf("cuts: %d\n", cuts[0]);
     int best_value = rod_cutting(rod_length, length_options, values,
                                  number_of_length_options, cuts, &remainder);
 
