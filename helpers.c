@@ -3,16 +3,19 @@
 
 #include "error_handling.h"
 #define BUFFER_SIZE 100
+#define SIZE_MULTIPLIER 2
 
 /* prints the distribution of cuts along with how much value they contributed to
 the total, the remainder, and the most value that can be obtained */
 void print_results(const int length_options[], const int cuts[],
                    const int values[], const int number_of_length_options,
                    const int remainder, const int best_value) {
-    printf("\nCutting list (<n> @ <size> = <total value>):\n");
+    printf("\nCutting list:\n");
     for (int ix = 0; ix < number_of_length_options; ix++) {
-        const int total_value = (cuts[ix] * values[ix]);
-        printf("%d @ %d = %d\n", cuts[ix], length_options[ix], total_value);
+        if (cuts[ix] != 0) {
+            const int total_value = (cuts[ix] * values[ix]);
+            printf("%d @ %d = %d\n", cuts[ix], length_options[ix], total_value);
+        }
     }
 
     printf("Remainder: %d\n", remainder);
@@ -28,7 +31,7 @@ void input_cut_options(int *length_options[], int *values[],
 
     printf(
         "Enter the list of piece prices in the format \"<length>, "
-        "<value>\" (Ctrl+Z for Windows / Ctrl+D for Linux to end):\n");
+        "<value>\":\n");
 
     while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         if (sscanf(buffer, "%d, %d", &length, &value) != 2 ||
@@ -42,7 +45,7 @@ void input_cut_options(int *length_options[], int *values[],
         }
 
         if (*number_of_length_options == *array_size) {
-            (*array_size) *= 2;
+            (*array_size) *= SIZE_MULTIPLIER;
 
             *length_options =
                 realloc(*length_options, (*array_size) * sizeof(int));
