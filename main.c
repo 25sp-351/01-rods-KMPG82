@@ -36,12 +36,18 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    sort(length_options, values, number_of_length_options);
+
+    // for (int ix = 0; ix < number_of_length_options; ix++)
+    //     printf("%d, %d\n", length_options[ix], values[ix]);
+
     int cuts[number_of_length_options];
     memset(cuts, 0, sizeof(cuts));
 
     int best_value = rod_cutting(rod_length, length_options, values,
                                  number_of_length_options, cuts, &remainder);
 
+    printf("\n");
     print_results(length_options, cuts, values, number_of_length_options,
                   remainder, best_value);
 }

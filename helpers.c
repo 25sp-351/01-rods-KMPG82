@@ -10,7 +10,6 @@ the total, the remainder, and the most value that can be obtained */
 void print_results(const int length_options[], const int cuts[],
                    const int values[], const int number_of_length_options,
                    const int remainder, const int best_value) {
-    printf("\nCutting list:\n");
     for (int ix = 0; ix < number_of_length_options; ix++) {
         if (cuts[ix] != 0) {
             const int total_value = (cuts[ix] * values[ix]);
@@ -55,5 +54,32 @@ void input_cut_options(int *length_options[], int *values[],
         (*length_options)[*number_of_length_options] = length;
         (*values)[*number_of_length_options]         = value;
         (*number_of_length_options)++;
+    }
+}
+
+/* uses a bubble sort algorithm to sort the pieces in descending order based on
+value, then based on length if values are the same */
+void sort(int length_options[], int values[], int number_of_length_options) {
+    for (int ix = 0; ix < number_of_length_options; ix++) {
+        for (int jx = ix + 1; jx < number_of_length_options; jx++) {
+            if (values[ix] < values[jx]) {
+                int temp           = values[ix];
+                values[ix]         = values[jx];
+                values[jx]         = temp;
+
+                temp               = length_options[ix];
+                length_options[ix] = length_options[jx];
+                length_options[jx] = temp;
+                continue;
+            }
+
+            if (values[ix] == values[jx]) {
+                if (length_options[ix] < length_options[jx]) {
+                    int temp           = length_options[ix];
+                    length_options[ix] = length_options[jx];
+                    length_options[jx] = temp;
+                }
+            }
+        }
     }
 }
