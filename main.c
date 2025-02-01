@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     int number_of_length_options = 0;
     int array_size               = INITIAL_SIZE;
 
-    input_cut_options(&length_options, &values, &number_of_length_options,
+    input_cut_options(length_options, values, &number_of_length_options,
                       &array_size);
 
     if (number_of_length_options == 0) {

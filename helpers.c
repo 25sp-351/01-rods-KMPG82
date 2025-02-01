@@ -7,8 +7,8 @@
 
 /* prints the distribution of cuts along with how much value they contributed to
 the total, the remainder, and the most value that can be obtained */
-void print_results(const int length_options[], const int cuts[],
-                   const int values[], const int number_of_length_options,
+void print_results(const int *length_options, const int *cuts,
+                   const int *values, const int number_of_length_options,
                    const int remainder, const int best_value) {
     for (int ix = 0; ix < number_of_length_options; ix++) {
         if (cuts[ix] != 0) {
@@ -22,7 +22,7 @@ void print_results(const int length_options[], const int cuts[],
 }
 
 /* prompts the user to input cut options along with their respective values */
-void input_cut_options(int *length_options[], int *values[],
+void input_cut_options(int *length_options, int *values,
                        int *number_of_length_options, int *array_size) {
     int length;
     int value;
@@ -43,23 +43,22 @@ void input_cut_options(int *length_options[], int *values[],
             continue;
         }
 
-        if (*number_of_length_options == *array_size) {
-            (*array_size) *= SIZE_MULTIPLIER;
+        if (number_of_length_options == array_size) {
+            *array_size *= SIZE_MULTIPLIER;
 
-            *length_options =
-                realloc(*length_options, (*array_size) * sizeof(int));
-            *values = realloc(*values, (*array_size) * sizeof(int));
+            length_options = realloc(length_options, *array_size * sizeof(int));
+            values         = realloc(values, *array_size * sizeof(int));
         }
 
-        (*length_options)[*number_of_length_options] = length;
-        (*values)[*number_of_length_options]         = value;
+        length_options[*number_of_length_options] = length;
+        values[*number_of_length_options]         = value;
         (*number_of_length_options)++;
     }
 }
 
-/* uses a bubble sort algorithm to sort the pieces in descending order based on
-value, then based on length if values are the same */
-void sort(int length_options[], int values[], int number_of_length_options) {
+/* uses a selection sort algorithm to sort the pieces in descending order based
+on value, then based on length if values are the same */
+void sort(int *length_options, int *values, int number_of_length_options) {
     for (int ix = 0; ix < number_of_length_options; ix++) {
         for (int jx = ix + 1; jx < number_of_length_options; jx++) {
             if (values[ix] < values[jx]) {
