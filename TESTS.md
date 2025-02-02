@@ -333,6 +333,8 @@ input:
 Enter the list of piece prices in the format "<length>, <value>":
 7, 20 
 18, 50
+20, 55
+22, 60
 
 output:
 2 @ 7 = 40
@@ -350,6 +352,8 @@ input:
 Enter the list of piece prices in the format "<length>, <value>":
 7, 20
 2, 2
+18, 50
+20, 55
 
 output:
 2 @ 7 = 40
@@ -374,5 +378,50 @@ Enter the list of piece prices in the format "<length>, <value>":
 output:
 Remainder: 1
 Value: 0
+
+status: passed
+----------------------
+TEST CASE 26
+tests for: not using specified format
+
+input:
+./main 1
+
+Enter the list of piece prices in the format "<length>, <value>":
+2. 5
+
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 27
+tests for: not using specified format
+
+input:
+./main 1
+
+Enter the list of piece prices in the format "<length>, <value>":
+2/ 5
+
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 28
+tests for: not using specified format
+
+input:
+./main 1
+
+Enter the list of piece prices in the format "<length>, <value>":
+2 , 5
+
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
 
 status: passed
