@@ -1,139 +1,378 @@
 TEST CASE 1
+tests for: rod length not present
+
+input:
+./main
+
+output:
+Invalid input. Input one positive integer in this format "./main <integer>". For example, "./main 45".
+
+status: passed
+----------------------
+TEST CASE 2
+tests for: no extra params allowed after rod length
+
+input:
+./main 10 24
+
+output:
+Invalid input. Input one positive integer in this format "./main <integer>". For example, "./main 45".
+
+status: passed
+----------------------
+TEST CASE 3
+tests for: rod length not an integer
+
+input:
+./main d
+
+output:
+Invalid input. Input one positive integer in this format "./main <integer>". For example, "./main 45".
+
+status: passed
+----------------------
+TEST CASE 4
+tests for: rod length is negative
+
+input:
+./main -10
+
+output:
+Invalid input. Input one positive integer in this format "./main <integer>". For example, "./main 45".
+
+status: passed
+----------------------
+TEST CASE 5
+tests for: at least one length and value pair is not entered
+
 input:
 ./main 10
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
-2, 5
-8, 10
-1, 2
+Enter the list of piece prices in the format "<length>, <value>":
 
-expected output:
-Cutting list (<n> @ <size> = <total value>): 
-5 @ 2 = 25 
-0 @ 8 = 0 
-0 @ 1 = 0 
-Remainder: 0
-Value: 25
+output:
+Invalid input. Enter at least one length and value pair.
 
-STATUS: PASSED
+status: passed
 ----------------------
-TEST CASE 2
+TEST CASE 6
+tests for: correct output with no remainder and one length and value pair
+
 input:
-./main 11
+./main 10
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
+Enter the list of piece prices in the format "<length>, <value>":
 2, 5
-8, 10
 
-expected output:
-Cutting list (<n> @ <size> = <total value>): 
-5 @ 2 = 25 
-0 @ 8 = 0 
-Remainder: 1
+output:
+5 @ 2 = 25
+Remainder: 0
 Value: 25
 
-STATUS: PASSED
+status: passed
 ----------------------
-TEST CASE 3
-Input:
-./main 12
+TEST CASE 7
+tests for: correct output with no remainder and multiple length and value pairs
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
-2, 6 
-4, 8
-6, 12
-3, 7
+input:
+./main 10
 
-Cutting list (<n> @ <size> = <total value>): 
-6 @ 2 = 36 
-0 @ 4 = 0 
-0 @ 6 = 0 
-0 @ 3 = 0 
+Enter the list of piece prices in the format "<length>, <value>":
+5, 10
+1, 1
+10, 20
+
+output:
+1 @ 10 = 20
 Remainder: 0
-Value: 36
+Value: 20
 
-STATUS: PASSED
+status: passed
 ----------------------
-TEST CASE 4
-Input:
+TEST CASE 8
+tests for: correct output with a remainder and one length and value pair
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+4, 7
+
+output:
+2 @ 4 = 14
+Remainder: 2
+Value: 14
+
+status: passed
+----------------------
+TEST CASE 9
+tests for: correct output with a remainder and multiple length and value pairs
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+3, 4
+2, 2
+11, 21
+
+output:
+3 @ 3 = 12
+Remainder: 1
+Value: 12
+
+status: passed
+----------------------
+TEST CASE 10
+tests for: correct output
+
+input:
+./main 4
+
+Enter the list of piece prices in the format "<length>, <value>":
+2, 5
+1, 1
+4, 10
+
+output:
+1 @ 4 = 10
+Remainder: 0
+Value: 10
+
+status: passed
+----------------------
+TEST CASE 11
+tests for: correct output using the same input in the above test, but inputted in a different order
+
+input:
+./main 4
+
+Enter the list of piece prices in the format "<length>, <value>":
+1, 1
+4, 10
+2, 5
+
+output:
+1 @ 4 = 10
+Remainder: 0
+Value: 10
+
+status: passed
+----------------------
+TEST CASE 12
+tests for: length input is not an integer
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+c, 4
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 13
+tests for: value input is not an integer
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+4, c
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 14
+tests for: length and value input are not integers
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+a, c
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 15
+tests for: length input is negative
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+-1, 4
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 16
+tests for: value input is negative
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+4, -1
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 17
+tests for: length and value input are negative
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+-1, -4
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 18
+tests for: additional input after length and value input
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+1, 2, 4
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 19
+tests for: additional input after length and value input
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+1, 2d
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 20
+tests for: additional input after length and value input
+
+input:
+./main 10
+
+Enter the list of piece prices in the format "<length>, <value>":
+1, 2 d
+
+output:
+Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
+
+status: passed
+----------------------
+TEST CASE 21
+tests for: correct output for composition of multiple pieces without a remainder
+
+input:
 ./main 14
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
+Enter the list of piece prices in the format "<length>, <value>":
 9, 10
 3, 6
 2, 3
 4, 8
 
-Expected Output:
-Cutting list (<n> @ <size> = <total value>): 
-0 @ 9 = 0 
-2 @ 3 = 12 
-0 @ 2 = 0 
-2 @ 4 = 16 
+output:
+2 @ 4 = 16
+2 @ 3 = 12
 Remainder: 0
 Value: 28
 
-STATUS: PASSED
+status: passed
 ----------------------
-TEST CASE 5
-Input:
-./main 45
+TEST CASE 22
+tests for: correct output for composition of a single piece without a remainder
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
-32, 10
-23, 5
-40, 15
-21, 2
+input:
+./main 16
 
-Expected Output:
-Cutting list (<n> @ <size> = <total value>): 
-0 @ 32 = 0 
-0 @ 23 = 0 
-1 @ 40 = 15 
-0 @ 21 = 0 
-Remainder: 5
-Value: 15
+Enter the list of piece prices in the format "<length>, <value>":
+9, 10
+3, 6
+2, 3
+4, 8
 
-STATUS: PASSED
-----------------------
-TEST CASE 6
-Input:
-./main 70
-
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
-20, 40
-2, 7
-4, 15
-12, 35
-
-Expected Output:
-Cutting list (<n> @ <size> = <total value>): 
-0 @ 20 = 0 
-1 @ 2 = 7 
-17 @ 4 = 255 
-0 @ 12 = 0 
+output:
+4 @ 4 = 32
 Remainder: 0
-Value: 262
+Value: 32
 
-STATUS: PASSED
+status: passed
 ----------------------
-TEST CASE 7
-Input:
-./main 45
+TEST CASE 23
+tests for: correct output for composition of a single piece with a remainder
 
-Enter the list of piece prices in the format <length>, <value> (Ctrl+Z for Windows / Ctrl+D for Linux to end):
-32, 13
-23, 12
-40, 15
-21, 10
+input:
+./main 16
 
-Expected Output:
-Cutting list (<n> @ <size> = <total value>): 
-0 @ 32 = 0 
-1 @ 23 = 12 
-0 @ 40 = 0 
-1 @ 21 = 10 
-remainder: 1
-Value: 22
+Enter the list of piece prices in the format "<length>, <value>":
+7, 20 
+18, 50
 
-STATUS: PASSED
+output:
+2 @ 7 = 40
+Remainder: 3
+Value: 40
+
+status: passed
+----------------------
+TEST CASE 24
+tests for: correct output for composition of multiple pieces with a remainder
+
+input:
+./main 16
+
+Enter the list of piece prices in the format "<length>, <value>":
+7, 20
+2, 2
+
+output:
+2 @ 7 = 40
+1 @ 2 = 2
+Remainder: 1
+Value: 42
+
+status: passed
+----------------------
+TEST CASE 25
+tests for: rod length is less than all lengths
+
+input:
+./main 1
+
+Enter the list of piece prices in the format "<length>, <value>":
+2, 5
+3, 6
+4, 7
+5, 8
+
+output:
+Remainder: 1
+Value: 0
+
+status: passed
