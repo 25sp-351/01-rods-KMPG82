@@ -38,9 +38,6 @@ int main(int argc, char *argv[]) {
 
     sort(length_options, values, number_of_length_options);
 
-    // for (int ix = 0; ix < number_of_length_options; ix++)
-    //     printf("%d, %d\n", length_options[ix], values[ix]);
-
     int cuts[number_of_length_options];
     memset(cuts, 0, sizeof(cuts));
 
