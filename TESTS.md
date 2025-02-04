@@ -48,7 +48,7 @@ tests for: at least one length and value pair is not entered
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
+
 
 output:
 Invalid input. Enter at least one length and value pair.
@@ -61,7 +61,6 @@ tests for: correct output with no remainder and one length and value pair
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 2, 5
 
 output:
@@ -77,7 +76,6 @@ tests for: correct output with no remainder and multiple length and value pairs
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 5, 10
 1, 1
 10, 20
@@ -95,7 +93,6 @@ tests for: correct output with a remainder and one length and value pair
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 4, 7
 
 output:
@@ -111,7 +108,6 @@ tests for: correct output with a remainder and multiple length and value pairs
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 3, 4
 2, 2
 11, 21
@@ -129,7 +125,6 @@ tests for: correct output
 input:
 ./main 4
 
-Enter the list of piece prices in the format "<length>, <value>":
 2, 5
 1, 1
 4, 10
@@ -147,7 +142,6 @@ tests for: correct output using the same input in the above test, but inputted i
 input:
 ./main 4
 
-Enter the list of piece prices in the format "<length>, <value>":
 1, 1
 4, 10
 2, 5
@@ -165,7 +159,6 @@ tests for: length input is not an integer
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 c, 4
 
 output:
@@ -179,7 +172,6 @@ tests for: value input is not an integer
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 4, c
 
 output:
@@ -193,7 +185,6 @@ tests for: length and value input are not integers
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 a, c
 
 output:
@@ -207,7 +198,6 @@ tests for: length input is negative
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 -1, 4
 
 output:
@@ -221,7 +211,6 @@ tests for: value input is negative
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 4, -1
 
 output:
@@ -235,7 +224,6 @@ tests for: length and value input are negative
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 -1, -4
 
 output:
@@ -249,7 +237,6 @@ tests for: additional input after length and value input
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 1, 2, 4
 
 output:
@@ -263,7 +250,6 @@ tests for: additional input after length and value input
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 1, 2d
 
 output:
@@ -277,7 +263,6 @@ tests for: additional input after length and value input
 input:
 ./main 10
 
-Enter the list of piece prices in the format "<length>, <value>":
 1, 2 d
 
 output:
@@ -291,7 +276,6 @@ tests for: correct output for composition of multiple pieces without a remainder
 input:
 ./main 14
 
-Enter the list of piece prices in the format "<length>, <value>":
 9, 10
 3, 6
 2, 3
@@ -311,7 +295,6 @@ tests for: correct output for composition of a single piece without a remainder
 input:
 ./main 16
 
-Enter the list of piece prices in the format "<length>, <value>":
 9, 10
 3, 6
 2, 3
@@ -330,7 +313,6 @@ tests for: correct output for composition of a single piece with a remainder
 input:
 ./main 16
 
-Enter the list of piece prices in the format "<length>, <value>":
 7, 20 
 18, 50
 20, 55
@@ -349,7 +331,6 @@ tests for: correct output for composition of multiple pieces with a remainder
 input:
 ./main 16
 
-Enter the list of piece prices in the format "<length>, <value>":
 7, 20
 2, 2
 18, 50
@@ -369,7 +350,6 @@ tests for: rod length is less than all lengths
 input:
 ./main 1
 
-Enter the list of piece prices in the format "<length>, <value>":
 2, 5
 3, 6
 4, 7
@@ -387,9 +367,7 @@ tests for: not using specified format
 input:
 ./main 1
 
-Enter the list of piece prices in the format "<length>, <value>":
 2. 5
-
 
 output:
 Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
@@ -402,9 +380,7 @@ tests for: not using specified format
 input:
 ./main 1
 
-Enter the list of piece prices in the format "<length>, <value>":
 2/ 5
-
 
 output:
 Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
@@ -417,9 +393,7 @@ tests for: not using specified format
 input:
 ./main 1
 
-Enter the list of piece prices in the format "<length>, <value>":
 2 , 5
-
 
 output:
 Invalid input. Only enter positive integers in the specified format. For example, "24, 5".
