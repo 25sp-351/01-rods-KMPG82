@@ -11,9 +11,11 @@
 /* main function that takes in the rod length as an argument from the command
 line */
 int main(int argc, char *argv[]) {
-    if (argc != 2 || !sscanf(argv[1], "%d", &argc) ||
+    int rod_length;
+
+    if (argc != 2 || !sscanf(argv[1], "%d", &rod_length) ||
         rod_length_additional_characters(argv[1]) ||
-        negative_rod_length(&argc)) {
+        negative_rod_length(rod_length)) {
         printf(
             "Invalid input. Input one positive integer in this format \"./main "
             "<integer>\". For "
@@ -21,7 +23,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    const int rod_length         = argc;
     int remainder                = 0;
     int *length_options          = calloc(INITIAL_SIZE, sizeof(int));
     int *values                  = calloc(INITIAL_SIZE, sizeof(int));

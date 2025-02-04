@@ -21,21 +21,17 @@ void print_results(const int *length_options, const int *cuts,
     printf("Value: %d\n", best_value);
 }
 
-/* prompts the user to input cut options along with their respective values */
+/* handles input piece options along with their respective values */
 void input_cut_options(int *length_options, int *values,
                        int *number_of_length_options, int *array_size) {
     int length;
     int value;
     char buffer[BUFFER_SIZE];
 
-    printf(
-        "Enter the list of piece prices in the format \"<length>, "
-        "<value>\":\n");
-
     while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         if (sscanf(buffer, "%d, %d", &length, &value) != 2 ||
             length_value_additional_characters(buffer) ||
-            negative_length_value(&length, &value) == 0) {
+            negative_length_value(length, value) == 0) {
             printf(
                 "Invalid input. Only enter positive integers in the specified "
                 "format. "
