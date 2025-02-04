@@ -8,8 +8,8 @@
 /* prints the distribution of cuts along with how much value they contributed to
 the total, the remainder, and the most value that can be obtained */
 void print_results(const int *length_options, const int *cuts,
-                   const int *values, const int number_of_length_options,
-                   const int remainder, const int best_value) {
+                   const int *values, int number_of_length_options,
+                   int remainder, int best_value) {
     for (int ix = 0; ix < number_of_length_options; ix++) {
         if (cuts[ix] != 0) {
             const int total_value = (cuts[ix] * values[ix]);

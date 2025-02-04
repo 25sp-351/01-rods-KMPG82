@@ -4,8 +4,8 @@
 /* recursive function that explores all possible options of cutting a rod of a
 given length and returns the maximum value that can be obtained with a given set
 of length options and their values */
-int rod_cutting(const int rod_length, const int *length_options,
-                const int *length_values, const int number_of_length_options,
+int rod_cutting(int rod_length, const int *length_options,
+                const int *length_values, int number_of_length_options,
                 int *cuts, int *remainder) {
     if (rod_length == 0)
         return 0;
